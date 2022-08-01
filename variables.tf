@@ -1,13 +1,3 @@
-variable "ecs_cluster_name" {
-  type        = string
-  description = "ECS Cluster Name"
-}
-
-variable "service_name" {
-  type        = string
-  description = "ECS Service Name"
-}
-
 variable "github_oauth_token" {
   type        = string
   description = "GitHub OAuth Token with permissions to access private repositories"
