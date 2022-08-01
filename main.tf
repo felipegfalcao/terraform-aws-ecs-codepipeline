@@ -307,24 +307,6 @@ resource "aws_codepipeline" "default" {
     }
   }
 
-  stage {
-    name = "Deploy"
-
-    action {
-      name            = "Deploy"
-      category        = "Deploy"
-      owner           = "AWS"
-      provider        = "ECS"
-      input_artifacts = ["task"]
-      version         = "1"
-
-      configuration = {
-        ClusterName = var.ecs_cluster_name
-        ServiceName = var.service_name
-      }
-    }
-  }
-
   lifecycle {
     # prevent github OAuthToken from causing updates, since it's removed from state file
     ignore_changes = [stage[0].action[0].configuration]
