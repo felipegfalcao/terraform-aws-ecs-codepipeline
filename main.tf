@@ -370,24 +370,6 @@ resource "aws_codepipeline" "bitbucket" {
       }
     }
   }
-
-  stage {
-    name = "Deploy"
-
-    action {
-      name            = "Deploy"
-      category        = "Deploy"
-      owner           = "AWS"
-      provider        = "ECS"
-      input_artifacts = ["task"]
-      version         = "1"
-
-      configuration = {
-        ClusterName = var.ecs_cluster_name
-        ServiceName = var.service_name
-      }
-    }
-  }
 }
 
 resource "random_string" "webhook_secret" {
